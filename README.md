@@ -1,82 +1,119 @@
-# JSON-LD Context Template _(@digitalcredentials/jsonld-context-template)_
+# Resume and HR Context _(hr-context)_
 
-Use this template to create a Github repository from which you can publish a JSON-LD context as an NPM package for use with JSON-LD document loaders like [`jsonld-document-loader`](https://github.com/digitalbazaar/jsonld-document-loader).
+[![Node.js CI](https://github.com/t3-innovation-network/hr-context/workflows/Node.js%20CI/badge.svg)](https://github.com/t3-innovation-network/hr-context/actions?query=workflow%3A%22Node.js+CI%22)
+[![NPM Version](https://img.shields.io/npm/v/hr-context.svg)](https://npm.im/package/hr-context)
 
-To get started, simply click the 'Use this template' button on the main Github page of this repo:
+> NPM package for the Resume and HR JSON-LD context.
 
-<img width="1059" alt="image" src="https://user-images.githubusercontent.com/547165/203641633-5184f95f-921f-4c6a-9fc4-d13523caf96d.png">
+## Table of Contents
 
-NOTE:  this readme explains how to use the template.  Once you've modified the template for your own context, replace the contents of this readme with the contents of [FINAL_README.md](./FINAL_README.md).  You'll need to go through that final readme and replace all instances of YOUR_REPO_NAME with, of course, your repo name.
+- [Background](#background)
+- [Install](#install)
+- [Usage](#usage)
+- [Developing](#developing)
+- [Publishing to NPM](#publish-to-npm)
+- [License](#license)
 
-After creating your new repo from this template, follow these steps to add your own context(s) and publish to NPM:
+## Background
 
-### Install 
+For use with JSON-LD document loaders (such as [`jsonld-document-loader`](https://github.com/digitalcredentials/jsonld-document-loader)).
 
-```npm install```
+## Install
 
-### Confirm the tests run
+Requires Node.js 18+
 
-This will establish that you are starting from a good working copy, i.e, with the right version of node, libraries, etc.
+```
+npm install hr-context
+```
 
-```npm run test```
+## Usage
 
-### Update the following files:
+```js
+import ctx from 'hr-context';
+// or
+const ctx = require('hr-context');
+const {contexts, constants} = ctx;
 
-* [package.json](package.json)
+ctx.CONTEXT_URL_V1
+// e.g., 'https://w3id.org/hr'
 
-Change the references to jsonld-context-template to your repo name.  And change the repo description.
+// get context data for a specific version of the context
+ctx.CONTEXT_V1
+// full context object
+```
 
-* [js/urls.js](js/urls.js) 
+This package can be used with bundlers, such as [webpack](https://webpack.js.org/), 
+in browser applications.
 
-Export all the known urls that json-ld document loaders use to link to your context. Again, follow the example in the file (and of course, remove the example urls).  Essentially, you want to export an object where the properties are well known constants and the values of those properties are the urls.  Note that you can include multiple constants, some of which can point to the same url, or to different urls.
+### API
 
-* [js/contexts/](js/contexts)
+The library exports an object with the following properties:
 
-Add your context files to this folder. One file per version of the context. Name the files according to the version.  This template has two example files:
+- `constants`: A Object that maps constants to well-known context URLs. 
+- `contexts`: A `Map` that maps URLs to full context data.
 
-[js/contexts/context_v1_1.js](js/contexts/context_v1_1.js)
+TEMPLATE USERS:  LIST ALL THE URLS AND CONTEXTS THAT YOU EXPORT, E.G.,
+- `CONTEXT_URL_V1`: the url for the context
+- `CONTEXT_V1`: the full context object
 
-[js/contexts/context_v1_2.js](js/contexts/context_v1_2.js)
+The exported object looks like:
 
-Feel free to simply replace the contexts in those example files with your own, but do rename as needed, and delete any unused example files.
-
-* [js/contexts/index.js](js/contexts/index.js)
-
-This file creates and exports:
-
-- a map of the known urls to contexts.
-- an object whose properties are constants and values are associated contexts
-
-Adjust accordingly as indicated in the file.
-
-* [js/index.js](js/index.js)
-
-The object exported from this file is effectively the API for the module. It will be available as an import to anyone including your npm package in their code.
-
-You shouldn't actually have to change anything in here.  It just exports what you've put into the other files.
-
-Your final exported object will look something like:
+TEMPLATE USERS:  ADJUST ACCORDINGLY:
 
 ```
 {
   constants: { 
-    CONTEXT_URL_V1_1: 'https://some.org/contexts/cats/v1_1',
-    CONTEXT_URL_V1_2: 'https://some.org/contexts/cats/v1_2 
+    CONTEXT_URL_V1: 'https://w3id.org/hr'
   },
   contexts: Map(1) {
-    'https://some.org/contexts/cats/v1_1' => { '@context': THE REST OF VERSION 1.1 OF YOUR CONTEXT OBJECT },
-    'https://some.org/contexts/cats/v1_2' => { '@context': THE REST OF VERSION 1.2 OF YOUR CONTEXT OBJECT }
+    'hhttps://w3id.org/hr' => { '@context': ... }
   },
-  CONTEXT_URL_V1_1: 'https://some.org/contexts/cats/v1_1',
-  CONTEXT_URL_V1_2: 'https://some.org/contexts/cats/v1_2,
-  CONTEXT_V1_1: { '@context': THE REST OF VERSION 1.1 OF YOUR CONTEXT OBJECT },
-  CONTEXT_V1_1: { '@context': THE REST OF VERSION 1.2 OF YOUR CONTEXT OBJECT }
+  CONTEXT_URL_V1: 'https://w3id.org/hr',
+  CONTEXT_V1: { '@context': ... }
 }
 ```
 
-### Update the rollup (commonjs) export in [rollup.config.js](rollup.config.js)
+## Developing
 
-Make sure the 'namedExports' section in [rollup.config.js](rollup.config.js) lists everything (and nothing more) that you are exporting from [js/index.js](js/index.js), like this example:
+You may want to edit the existing context, add a new version of the context, or
+add another URL-to-context mapping.
+
+### Edit existing context
+
+The context files are in the [js/contexts directory](js/contexts/).
+
+Be careful, though, because if someone has used your old context to sign an LD-proof,
+updating the context will break verification if the verifier uses the updated context.
+
+You may want to instead add a new *version* of the context.  
+
+### Add a new version of the context
+
+Add a new context file to the [js/contexts directory](js/contexts/). Follow the
+naming convention used with the existing context file(s).  So, for example, to
+add v1.2, add a context file called context_v1.js.  You'll also want to
+another url-to-context mapping for your new version
+
+### Add another URL-to-context mapping
+
+Anytime you add a new version of your context file you'll want to add a new url
+for your context.  You may also want to add an additional URL or URLs for an
+existing context version.
+
+Either way, add another property (for each new url-to-context mapping) to the
+exported object of the ['js/urls.js'](js/urls.js) file.
+Follow the example of the existing properties.
+
+### Update the tests:
+
+Adjust the tests in [context.spec.js](context.spec.js) to use the constants that
+you're exporting.
+
+### Update the rollup (commonjs) export in rollup.config.js
+
+Make sure the 'namedExports' section in [rollup.config.js](rollup.config.js)
+lists everything (and nothing more) that you are exporting from [js/index.js](js/index.js),
+like this example:
 
 ```
 plugins: [
@@ -87,7 +124,7 @@ plugins: [
           'contexts', 
           'constants', 
           'CONTEXT_V1_1', 
-          'CONTEXT_V1_2', 
+          'CONTEXT_V1_2, 
           'CONTEXT_URL_V1_1', 
           'CONTEXT_URL_V1_2'
         ]
@@ -96,44 +133,39 @@ plugins: [
   ]
 ```
 
-### Update the tests:
-
-Adjust the tests in [test/context.spec.js](test/context.spec.js) to use the constants/urls/contexts that you're exporting.
-
 ## Publish to NPM
 
-Once you've made your changes and your tests are passing (`npm test`), you'll want to publish to NPM.
+Once your made your changes and your tests are passing (`npm test`), you'll want
+to publish to NPM.
 
-You should first take the advice given here: 
-
-[creating-and-publishing-scoped-public-packages](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages).
+You should first take the advice given here: [creating-and-publishing-scoped-public-packages](https://docs.npmjs.com/creating-and-publishing-scoped-public-packages).
 
 and try to install your package locally with:
 
-```npm install full-path-to-your-package-directory```
+```npm install full-path-to-your-repo-directory```
 
-If all goes well, then publish as explained here:
+If all goes well, then bump the version number as explained here:
 
 [updating-your-published-package-version-number](https://docs.npmjs.com/updating-your-published-package-version-number)
 
-In short, to publish to npm:
+Like so:
 
 ```
-cd /path/to/<YOUR_GITHUB_REPO_NAME>
+cd /path/to/YOUR_REPO_NAME
+npm version <update_type>  
+```
+
+NOTE: replace <update_type> with one of the [semantic versioning release types](https://docs.npmjs.com/about-semantic-versioning) - patch, major, or minor.
+
+And publish:
+
+```
+cd /path/to/YOUR_REPO_NAME
 npm publish --access public
 ```
 
-e.g.,
+## License
 
-```
-cd /path/to/open-badges-context
-npm publish --access public
-```
+* [MIT License](./LICENSE)
 
-This of course assumes that your npm user is registered to publish to @digitalcredentials
 
-And if you haven't already, you may need to create your npm user account and/or login, as explained [here](https://docs.npmjs.com/creating-a-new-npm-user-account)
-
-Finally, don't forget to replace the copy of this REAMDE with the contents of [FINAL_README.md](./FINAL_README.md).  You'll also need to go through that readme and update references to the context name with your own context name.
-
-Note that the NPM badge at the top of the final README won't show until you've published to NPM.

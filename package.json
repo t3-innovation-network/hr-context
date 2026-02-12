@@ -1,5 +1,5 @@
 {
-  "name": "@digitalcredentials/jsonld-context-template",
+  "name": "hr-context",
   "version": "1.0.0",
   "description": "NPM package for a JSON-LD context.",
   "main": "js/index.js",
@@ -9,18 +9,27 @@
     "dist/context.js",
     "js"
   ],
+  "scripts": {
+    "build": "npm run clean && npm run serialize && webpack && rollup -c",
+    "clean": "rm -rf dist/*",
+    "lint": "eslint js test",
+    "prepare": "npm run build",
+    "serialize": "node bin/serialize.js",
+    "test": "npm run lint && npm run build && npm run test-node && npm run test-karma",
+    "test-karma": "karma start test/karma.conf.js",
+    "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks test/*.spec.js"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/digitalcredentials/jsonld-context-template"
+    "url": "https://github.com/t3-innovation-network/hr-context"
   },
   "bugs": {
-    "url": "https://github.com/digitalcredentials/jsonld-context-template/issues"
+    "url": "https://github.com/t3-innovation-network/hr-context/issues"
   },
   "author": {
-    "name": "Digital Credentials Consortium",
-    "url": "https://dcconsortium.org/"
+    "name": "T3 Innovation Network"
   },
-  "homepage": "https://github.com/digitalcredentials/jsonld-context-template#readme",
+  "homepage": "https://github.com/t3-innovation-network/hr-context#readme",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.11.0",
@@ -47,14 +56,5 @@
     "rollup-plugin-commonjs": "^10.1.0",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
-  },
-  "scripts": {
-    "build": "npm run clean && webpack && rollup -c",
-    "clean": "rm -rf dist/*",
-    "lint": "eslint js test",
-    "prepare": "npm run build",
-    "test": "npm run lint && npm run build && npm run test-node && npm run test-karma",
-    "test-karma": "karma start test/karma.conf.js",
-    "test-node": "cross-env NODE_ENV=test mocha --preserve-symlinks test/*.spec.js"
   }
 }

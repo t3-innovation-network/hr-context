@@ -1,13 +1,7 @@
 /* eslint-disable */
 /*!
- * Copyright (c) 2022 Digital Credentials Consortium. All rights reserved.
+ * Copyright (c) 2026 T3 Innovation Network. All rights reserved.
  */
-'use strict';
-
-/*
-TEMPLATE USERS: CHANGE TO YOUR OWN CONSTANT/URL PAIRS
-*/
 module.exports = {
-  CONTEXT_URL_V1_1: 'https://SOMEURL',
-  CONTEXT_URL_V1_2: 'https://SOMEOTHERURL'
+  CONTEXT_URL_V1: 'https://w3id.org/hr'
 };

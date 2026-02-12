@@ -1,8 +1,6 @@
 /*!
- * Copyright (c) 2022 Digital Credentials Consortium. All rights reserved.
+ * Copyright (c) 2026 T3 Innovation Network. All rights reserved.
  */
-'use strict';
-
 const {urlsToContexts, constantsToContexts} = require('./contexts');
 const constantsToUrls = require('./urls');
 

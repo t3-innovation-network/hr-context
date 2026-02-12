@@ -1,0 +1,80 @@
+/* eslint-disable */
+/*!
+ * Copyright (c) 2026 T3 Innovation Network. All rights reserved.
+ */
+module.exports = {
+  "@context": {
+    "@protected": true,
+    "id": "@id",
+    "type": "@type",
+
+    "LERRSCredential": {
+      "@id": "https://w3id.org/hr/v1#LERRSCredential",
+
+      "@context": {
+        "@protected": true,
+
+        "duration": "https://w3id.org/hr/v1#duration",
+
+        "educationAndLearning": {
+          "@id": "https://w3id.org/hr/v1#educationAndLearning",
+          "@container": "@list"
+        },
+
+        "employmentHistory": {
+          "@id": "https://w3id.org/hr/v1#employmentHistory",
+          "@container": "@list"
+        },
+
+        "employmentHistoryItem": "https://w3id.org/hr/v1#employmentHistoryItem",
+
+        "endDate": "https://w3id.org/hr/v1#endDate",
+
+        "EmploymentHistoryItemCredential": "https://w3id.org/hr/v1#EmploymentHistoryItemCredential",
+
+        "keyword": {
+          "@id:": "https://w3id.org/hr/v1#keyword",
+          "@container": "@set"
+        },
+        "name": "http://schema.org#name",
+        "narrative": "https://w3id.org/hr/v1#narrative",
+        "person": "https://w3id.org/hr/v1#person",
+        "primaryLanguage": "https://w3id.org/hr/v1#primaryLanguage",
+        "text": "https://w3id.org/hr/v1#text",
+        "yearsOfExperience": "https://w3id.org/hr/v1#yearsOfExperience",
+        "description": "https://w3id.org/hr/v1#description",
+        "definitionReference": "https://w3id.org/hr/v1#definitionReference",
+        "schemeReference": "https://w3id.org/hr/v1#schemeReference",
+        "endorser": {
+          "@id:": "https://w3id.org/hr/v1#endorser",
+          "@container": "@set"
+        },
+
+        "organization": "https://w3id.org/hr/v1#organization",
+        "Resume": "https://w3id.org/hr/v1#Resume",
+
+        "skill": {
+          "@id": "https://w3id.org/hr/v1#skill",
+          "@container": "@list"
+        },
+
+        "startDate": "https://w3id.org/hr/v1#startDate",
+
+        "stillEmployed": "https://w3id.org/hr/v1#stillEmployed",
+
+        "title": "https://w3id.org/hr/v1#title",
+        "tradeName": "https://w3id.org/hr/v1#tradeName",
+
+        "lastUsedDate": {
+          "@id": "https://w3id.org/hr/v1#lastUsedDate",
+          "@type": "https://www.w3.org/2001/XMLSchema#date"
+        },
+        "interestLevel": "https://w3id.org/hr/v1#interestLevel",
+        "comment": {
+          "@id:": "https://w3id.org/hr/v1#comment",
+          "@container": "@set"
+        }
+      }
+    }
+  }
+};

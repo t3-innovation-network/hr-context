@@ -1,4 +1,4 @@
-# @digitalcredentials/open-badges-context ChangeLog
+# hr-context ChangeLog
 
 ## 1.0.0
 
