@@ -3,6 +3,27 @@
     "@protected": true,
     "id": "@id",
     "type": "@type",
+    "SelfIssuedCredential": "https://w3id.org/hr/v1#SelfIssuedCredential",
+    "SkillClaimCredential": "https://w3id.org/hr/v1#SkillClaimCredential",
+    "SkillClaim": {
+      "@id": "https://w3id.org/hr/v1#SkillClaim",
+      "@context": {
+        "@protected": true,
+        "id": "@id",
+        "type": "@type",
+        "person": {
+          "@id": "https://w3id.org/hr/v1#person",
+          "@type": "https://schema.org/Person"
+        },
+        "skill": {
+          "@id": "https://w3id.org/hr/v1#skill",
+          "@type": "@id"
+        }
+      }
+    },
+    "source": "https://w3id.org/hr/v1#source",
+    "confidence": "https://w3id.org/hr/v1#confidence",
+    "email": "https://schema.org/email",
     "LERRSCredential": {
       "@id": "https://w3id.org/hr/v1#LERRSCredential",
       "@context": {

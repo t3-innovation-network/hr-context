@@ -1,11 +1,13 @@
 {
   "name": "hr-context",
-  "version": "1.0.0",
-  "description": "NPM package for a JSON-LD context.",
+  "version": "0.1.0",
+  "description": "NPM package for a T3 HR and Skills JSON-LD context.",
   "main": "js/index.js",
   "module": "./dist/context.esm.js",
+  "types": "./types/index.d.ts",
   "files": [
     "contexts",
+    "types",
     "dist/context.js",
     "js"
   ],
@@ -31,6 +33,9 @@
   },
   "homepage": "https://github.com/t3-innovation-network/hr-context#readme",
   "license": "MIT",
+  "dependencies": {
+    "@digitalcredentials/ssi": "^5.4.2"
+  },
   "devDependencies": {
     "@babel/core": "^7.11.0",
     "@babel/plugin-transform-modules-commonjs": "^7.10.4",

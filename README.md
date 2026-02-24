@@ -28,11 +28,83 @@ npm install hr-context
 
 ## Usage
 
+### Using the exported Typescript types
+
+```ts
+import type { ISkillClaimCredential } from 'hr-context'
+
+const vc: ISkillClaimCredential = {
+  '@context': [
+    'https://www.w3.org/ns/credentials/v2',
+    'https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json',
+    'https://t3-innovation-network.github.io/hr-context/contexts/v1.jsonld'
+  ],
+  id: 'urn:uuid:64979aba-f1d2-45b4-8b6c-2008440503dd',
+  type: ['VerifiableCredential', 'SkillClaimCredential', 'SelfIssuedCredential'],
+  issuer: 'did:key:z6Mkfeco2NSEPeFV3DkjNSabaCza1EoS3CmqLb1eJ5BriiaR',
+  credentialSubject: {
+    type: ['SkillClaim'],
+    person: {
+      type: ['Person'],
+      id: 'did:key:z6Mkfeco2NSEPeFV3DkjNSabaCza1EoS3CmqLb1eJ5BriiaR',
+      name: 'Alice Smith',
+      email: 'alice@example.com'
+    },
+    narrative: 'I led the end-to-end UX redesign of a healthcare mobile app. ' +
+      'I conducted user research interviews, synthesized findings into journey ' +
+      'maps, created low- and high-fidelity wireframes in Figma, built ' +
+      'interactive prototypes, and ran usability testing sessions. I ' +
+      'collaborated closely with engineers to refine implementation and improve ' +
+      'accessibility compliance.',
+    skill: [
+      {
+        id: 'urn:uuid:384cd575-ceab-4804-b7fb-afa37394b706',
+        name: 'UX Design',
+        description: 'Designs user-centered digital interfaces and experiences.',
+        source: 'ollama',
+        confidence: 0.94,
+        alignment: [
+          {
+            type: ['Alignment'],
+            targetFramework: 'O*Net',
+            targetCode: '15-1255.00',
+            targetName: 'Web and Digital Interface Designers'
+          }
+        ]
+      },
+      {
+        id: 'urn:uuid:bc87542b-c044-47d7-afbf-0a5bce0e262d',
+        name: 'Wireframing',
+        description: 'Creates low and high-fidelity wireframes to communicate design intent.',
+        source: 'ollama',
+        confidence: 0.89,
+        alignment: [
+          {
+            type: ['Alignment'],
+            targetFramework: 'O*Net',
+            targetCode: '15-1255.00-TASK',
+            targetName: 'Develop design mockups and wireframes'
+          }
+        ]
+      }
+    ]
+  },
+  evidence: [
+    {
+      id: 'https://files.example/design.webp',
+      name: 'Sample UX Design Diagram'
+    }
+  ]
+}
+```
+
+### Using the `@context` for Document Loaders
+
 ```js
-import ctx from 'hr-context';
+import ctx from 'hr-context'
 // or
-const ctx = require('hr-context');
-const {contexts, constants} = ctx;
+const ctx = require('hr-context')
+const { contexts, constants } = ctx
 
 ctx.CONTEXT_URL_V1
 // e.g., 'https://w3id.org/hr'
