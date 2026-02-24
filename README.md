@@ -32,7 +32,7 @@ npm install hr-context
 
 ```ts
 import type { ISkillClaimCredential } from 'hr-context'
-
+ 
 const vc: ISkillClaimCredential = {
   '@context': [
     'https://www.w3.org/ns/credentials/v2',
