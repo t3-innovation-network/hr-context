@@ -27,6 +27,7 @@ module.exports = {
         }
       }
     },
+    "durationPerformed": "https://w3id.org/hr#durationPerformed",
     "framework": "https://w3id.org/hr#framework",
     "frameworkMatch": "https://w3id.org/hr#frameworkMatch",
     "socCode": {

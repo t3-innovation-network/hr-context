@@ -19,6 +19,8 @@ export interface ISkill extends ILinkedDataObject {
   name: string
   description?: string
   source?: string | object
+  durationPerformed?: string
+  narrative?: string
   frameworkMatch?: IFrameworkMatch[]
 }
 
