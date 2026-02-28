@@ -29,7 +29,10 @@ module.exports = {
     },
     "framework": "https://w3id.org/hr#framework",
     "frameworkMatch": "https://w3id.org/hr#frameworkMatch",
-    "socCode": "https://w3id.org/hr#socCode",
+    "socCode": {
+      "@id": "https://w3id.org/hr#socCode",
+      "@type": "@set"
+    },
     "source": "https://w3id.org/hr#source",
     "similarityScore": "https://w3id.org/hr#similarityScore",
     "email": "https://schema.org/email"
