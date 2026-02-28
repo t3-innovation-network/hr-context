@@ -19,8 +19,11 @@
         }
       }
     },
+    "framework": "https://w3id.org/hr#framework",
+    "frameworkMatch": "https://w3id.org/hr#frameworkMatch",
+    "socCode": "https://w3id.org/hr#socCode",
     "source": "https://w3id.org/hr#source",
-    "confidence": "https://w3id.org/hr#confidence",
+    "similarityScore": "https://w3id.org/hr#similarityScore",
     "email": "https://schema.org/email"
   }
 }

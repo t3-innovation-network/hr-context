@@ -37,7 +37,7 @@ const vc: ISkillClaimCredential = {
   '@context': [
     'https://www.w3.org/ns/credentials/v2',
     'https://purl.imsglobal.org/spec/ob/v3p0/context-3.0.3.json',
-    'https://t3-innovation-network.github.io/hr-context/contexts/v1.jsonld'
+    'https://w3id.org/hr/v1'
   ],
   id: 'urn:uuid:64979aba-f1d2-45b4-8b6c-2008440503dd',
   type: ['VerifiableCredential', 'SkillClaimCredential', 'SelfIssuedCredential'],
@@ -62,13 +62,12 @@ const vc: ISkillClaimCredential = {
         name: 'UX Design',
         description: 'Designs user-centered digital interfaces and experiences.',
         source: 'ollama',
-        confidence: 0.94,
-        alignment: [
+        frameworkMatch: [
           {
-            type: ['Alignment'],
-            targetFramework: 'O*Net',
-            targetCode: '15-1255.00',
-            targetName: 'Web and Digital Interface Designers'
+            framework: 'O*Net',
+            socCode: ['15-1255.00'],
+            name: 'Web and Digital Interface Designers',
+            similarityScore: 0.91
           }
         ]
       },
@@ -77,13 +76,12 @@ const vc: ISkillClaimCredential = {
         name: 'Wireframing',
         description: 'Creates low and high-fidelity wireframes to communicate design intent.',
         source: 'ollama',
-        confidence: 0.89,
-        alignment: [
+        frameworkMatch: [
           {
-            type: ['Alignment'],
-            targetFramework: 'O*Net',
-            targetCode: '15-1255.00-TASK',
-            targetName: 'Develop design mockups and wireframes'
+            framework: 'O*Net',
+            socCode: '15-1255.00-TASK',
+            name: 'Develop design mockups and wireframes',
+            similarityScore: 0.89
           }
         ]
       }

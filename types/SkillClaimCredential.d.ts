@@ -1,4 +1,4 @@
-import { IAlignment, ICredentialSubject, ILinkedDataObject, IVerifiableCredential } from '@digitalcredentials/ssi';
+import { ICredentialSubject, ILinkedDataObject, IVerifiableCredential } from '@digitalcredentials/ssi';
 
 // Partly implements https://schema.org/Person
 export interface IPerson extends ILinkedDataObject {
@@ -6,19 +6,26 @@ export interface IPerson extends ILinkedDataObject {
   email?: string
 }
 
+export interface IFrameworkMatch extends ILinkedDataObject {
+  // id - OBv3 alignment 'targetUrl'
+  name?: string // OBv3 alignment 'targetName'
+  socCode?: string[]
+  framework?: string
+  similarityScore?: number
+}
+
 export interface ISkill extends ILinkedDataObject {
-  id: string,
-  name: string,
-  description?: string,
-  source?: string,
-  confidence?: number,
-  alignment?: IAlignment[]
+  id: string
+  name: string
+  description?: string
+  source?: string | object
+  frameworkMatch?: IFrameworkMatch[]
 }
 
 export interface ISkillClaim extends ICredentialSubject {
-  type: ['SkillClaim', ...Array<string>],
-  person: IPerson,
-  narrative?: string,
+  type: ['SkillClaim', ...Array<string>]
+  person: IPerson
+  narrative?: string
   skill: ISkill[]
 }
 
