@@ -1,6 +1,6 @@
 {
   "name": "hr-context",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "NPM package for a T3 HR and Skills JSON-LD context.",
   "main": "js/index.js",
   "module": "./dist/context.esm.js",
@@ -12,7 +12,7 @@
     "js"
   ],
   "scripts": {
-    "build": "npm run clean && npm run serialize && webpack && rollup -c",
+    "build": "npm run clean && npm run serialize",
     "clean": "rm -rf dist/*",
     "lint": "eslint js test",
     "prepare": "npm run build",
