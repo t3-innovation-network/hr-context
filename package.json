@@ -1,6 +1,6 @@
 {
   "name": "hr-context",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "description": "NPM package for a T3 HR and Skills JSON-LD context.",
   "main": "js/index.js",
   "module": "./dist/context.esm.js",
