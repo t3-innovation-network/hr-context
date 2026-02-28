@@ -79,7 +79,7 @@ const vc: ISkillClaimCredential = {
         frameworkMatch: [
           {
             framework: 'O*Net',
-            socCode: '15-1255.00-TASK',
+            socCode: ['15-1255.00-TASK'],
             name: 'Develop design mockups and wireframes',
             similarityScore: 0.89
           }
