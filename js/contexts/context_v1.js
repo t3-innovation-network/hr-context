@@ -32,7 +32,7 @@ module.exports = {
     "frameworkMatch": "https://w3id.org/hr#frameworkMatch",
     "socCode": {
       "@id": "https://w3id.org/hr#socCode",
-      "@type": "@set"
+      "@container": "@set"
     },
     "source": "https://w3id.org/hr#source",
     "similarityScore": "https://w3id.org/hr#similarityScore",
