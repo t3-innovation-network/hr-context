@@ -89,6 +89,7 @@ const vc: ISkillClaimCredential = {
   },
   evidence: [
     {
+      type: ['Evidence'],
       id: 'https://files.example/design.webp',
       name: 'Sample UX Design Diagram'
     }

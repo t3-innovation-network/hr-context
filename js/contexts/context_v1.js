@@ -24,6 +24,10 @@ module.exports = {
         "skill": {
           "@id": "https://w3id.org/hr#skill",
           "@type": "@id"
+        },
+        "inferredSkill": {
+          "@id": "https://w3id.org/hr#inferredSkill",
+          "@type": "@id"
         }
       }
     },
@@ -35,6 +39,7 @@ module.exports = {
       "@container": "@set"
     },
     "source": "https://w3id.org/hr#source",
+    "model": "https://w3id.org/hr#model",
     "similarityScore": "https://w3id.org/hr#similarityScore",
     "email": "https://schema.org/email"
   }
